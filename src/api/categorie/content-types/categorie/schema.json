@@ -2,27 +2,33 @@
   "kind": "collectionType",
   "collectionName": "categories",
   "info": {
-    "singularName": "category",
+    "singularName": "categorie",
     "pluralName": "categories",
-    "displayName": "Category",
-    "description": "Organize your content into categories"
+    "displayName": "Catégorie"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "nom": {
       "type": "string"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "nom"
     },
-    "articles": {
+    "actualites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::actualite.actualite",
+      "mappedBy": "categorie"
+    },
+    "projects": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article.article",
-      "mappedBy": "category"
+      "mappedBy": "categorie"
     },
     "description": {
       "type": "text"

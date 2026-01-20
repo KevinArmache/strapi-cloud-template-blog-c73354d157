@@ -10,5 +10,39 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {}
+  "attributes": {
+    "categorie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "actualites"
+    },
+    "titre": {
+      "type": "text"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titre"
+    },
+    "date": {
+      "type": "text",
+      "default": "10 Decembre 2025"
+    },
+    "description": {
+      "type": "text"
+    },
+    "texte": {
+      "type": "text"
+    }
+  }
 }
