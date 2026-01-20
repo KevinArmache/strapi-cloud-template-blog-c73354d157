@@ -441,10 +441,6 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    categorie: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::categorie.categorie'
-    >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -452,6 +448,7 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
     date: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'10 Decembre 2025'>;
     description: Schema.Attribute.Text;
+    genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -468,12 +465,12 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
+export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
+  collectionName: 'genres';
   info: {
-    displayName: 'Cat\u00E9gorie';
-    pluralName: 'categories';
-    singularName: 'categorie';
+    displayName: 'Genre';
+    pluralName: 'genres';
+    singularName: 'genre';
   };
   options: {
     draftAndPublish: true;
@@ -488,14 +485,41 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::categorie.categorie'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'> &
       Schema.Attribute.Private;
     nom: Schema.Attribute.String;
+    projets: Schema.Attribute.Relation<'oneToMany', 'api::projet.projet'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'nom'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
+  collectionName: 'projets';
+  info: {
+    displayName: 'Projet';
+    pluralName: 'projets';
+    singularName: 'projet';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projet.projet'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titre: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1013,7 +1037,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::actualite.actualite': ApiActualiteActualite;
-      'api::categorie.categorie': ApiCategorieCategorie;
+      'api::genre.genre': ApiGenreGenre;
+      'api::projet.projet': ApiProjetProjet;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

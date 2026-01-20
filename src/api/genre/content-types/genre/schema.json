@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "genres",
   "info": {
-    "singularName": "categorie",
-    "pluralName": "categories",
-    "displayName": "Catégorie"
+    "singularName": "genre",
+    "pluralName": "genres",
+    "displayName": "Genre"
   },
   "options": {
     "draftAndPublish": true
@@ -22,9 +22,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::actualite.actualite",
-      "mappedBy": "categorie"
+      "mappedBy": "genre"
     },
-
+    "projets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projet.projet",
+      "mappedBy": "genre"
+    },
     "description": {
       "type": "text"
     }

@@ -11,12 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "categorie": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::categorie.categorie",
-      "inversedBy": "actualites"
-    },
     "titre": {
       "type": "text"
     },
@@ -43,6 +37,12 @@
     },
     "texte": {
       "type": "text"
+    },
+    "genre": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::genre.genre",
+      "inversedBy": "actualites"
     }
   }
 }
