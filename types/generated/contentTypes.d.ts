@@ -497,6 +497,34 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
+  collectionName: 'newsletters';
+  info: {
+    displayName: 'Newsletter';
+    pluralName: 'newsletters';
+    singularName: 'newsletter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter.newsletter'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
   collectionName: 'projets';
   info: {
@@ -1038,6 +1066,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::actualite.actualite': ApiActualiteActualite;
       'api::genre.genre': ApiGenreGenre;
+      'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::projet.projet': ApiProjetProjet;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
