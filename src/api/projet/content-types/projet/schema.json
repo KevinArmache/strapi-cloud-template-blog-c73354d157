@@ -44,7 +44,7 @@
     "texte_du_projet": {
       "type": "richtext"
     },
-    "image": {
+    "cover": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

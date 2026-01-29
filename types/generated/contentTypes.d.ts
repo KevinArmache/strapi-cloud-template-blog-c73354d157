@@ -537,12 +537,12 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
   };
   attributes: {
     beneficiaires: Schema.Attribute.Text;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localisation: Schema.Attribute.Text;
     localizations: Schema.Attribute.Relation<
