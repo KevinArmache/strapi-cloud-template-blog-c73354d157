@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * status controller
+ * statut controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::status.status');
+module.exports = createCoreController('api::statut.statut');

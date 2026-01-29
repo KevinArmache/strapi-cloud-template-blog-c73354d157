@@ -20,12 +20,6 @@
       "target": "api::genre.genre",
       "inversedBy": "projets"
     },
-    "statut": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::status.status",
-      "inversedBy": "projets"
-    },
     "beneficiaires": {
       "type": "text"
     },
@@ -53,6 +47,12 @@
         "videos",
         "audios"
       ]
+    },
+    "statuts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::statut.statut",
+      "mappedBy": "projet"
     }
   }
 }

@@ -553,7 +553,7 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
     objectif_du_projet: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     realisations_cles: Schema.Attribute.JSON;
-    statut: Schema.Attribute.Relation<'manyToOne', 'api::status.status'>;
+    statuts: Schema.Attribute.Relation<'oneToMany', 'api::statut.statut'>;
     texte_du_projet: Schema.Attribute.RichText;
     titre: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
@@ -562,12 +562,12 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
-  collectionName: 'statuses';
+export interface ApiStatutStatut extends Struct.CollectionTypeSchema {
+  collectionName: 'statuts';
   info: {
-    displayName: 'Status ';
-    pluralName: 'statuses';
-    singularName: 'status';
+    displayName: 'Statut';
+    pluralName: 'statuts';
+    singularName: 'statut';
   };
   options: {
     draftAndPublish: true;
@@ -579,12 +579,13 @@ export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::status.status'
+      'api::statut.statut'
     > &
       Schema.Attribute.Private;
     nom: Schema.Attribute.String;
-    projets: Schema.Attribute.Relation<'oneToMany', 'api::projet.projet'>;
+    projet: Schema.Attribute.Relation<'manyToOne', 'api::projet.projet'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'nom'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1105,7 +1106,7 @@ declare module '@strapi/strapi' {
       'api::genre.genre': ApiGenreGenre;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::projet.projet': ApiProjetProjet;
-      'api::status.status': ApiStatusStatus;
+      'api::statut.statut': ApiStatutStatut;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

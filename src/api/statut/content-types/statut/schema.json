@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "statuts",
+  "info": {
+    "singularName": "statut",
+    "pluralName": "statuts",
+    "displayName": "Statut"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "projet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::projet.projet",
+      "inversedBy": "statuts"
+    },
+    "nom": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nom"
+    }
+  }
+}

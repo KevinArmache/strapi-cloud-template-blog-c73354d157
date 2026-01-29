@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * status router
+ * statut router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::status.status');
+module.exports = createCoreRouter('api::statut.statut');
