@@ -19,6 +19,30 @@
       "relation": "manyToOne",
       "target": "api::genre.genre",
       "inversedBy": "projets"
+    },
+    "statut": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::status.status",
+      "inversedBy": "projets"
+    },
+    "beneficiaires": {
+      "type": "text"
+    },
+    "localisation": {
+      "type": "text"
+    },
+    "realisations_cles": {
+      "type": "json"
+    },
+    "objectif_du_projet": {
+      "type": "json"
+    },
+    "description": {
+      "type": "text"
+    },
+    "texte_du_projet": {
+      "type": "richtext"
     }
   }
 }

@@ -536,18 +536,54 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    beneficiaires: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localisation: Schema.Attribute.Text;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::projet.projet'
     > &
       Schema.Attribute.Private;
+    objectif_du_projet: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
+    realisations_cles: Schema.Attribute.JSON;
+    statut: Schema.Attribute.Relation<'manyToOne', 'api::status.status'>;
+    texte_du_projet: Schema.Attribute.RichText;
     titre: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
+  collectionName: 'statuses';
+  info: {
+    displayName: 'Status ';
+    pluralName: 'statuses';
+    singularName: 'status';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::status.status'
+    > &
+      Schema.Attribute.Private;
+    nom: Schema.Attribute.String;
+    projets: Schema.Attribute.Relation<'oneToMany', 'api::projet.projet'>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1068,6 +1104,7 @@ declare module '@strapi/strapi' {
       'api::genre.genre': ApiGenreGenre;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::projet.projet': ApiProjetProjet;
+      'api::status.status': ApiStatusStatus;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
