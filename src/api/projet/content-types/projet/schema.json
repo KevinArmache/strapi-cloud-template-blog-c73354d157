@@ -56,11 +56,11 @@
         "audios"
       ]
     },
-    "statuts": {
+    "statut": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::statut.statut",
-      "mappedBy": "projet"
+      "inversedBy": "projets"
     },
     "periode": {
       "type": "text",

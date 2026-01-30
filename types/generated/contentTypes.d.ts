@@ -557,7 +557,7 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
     periode: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     realisations_cles: Schema.Attribute.JSON & Schema.Attribute.Required;
-    statuts: Schema.Attribute.Relation<'oneToMany', 'api::statut.statut'>;
+    statut: Schema.Attribute.Relation<'manyToOne', 'api::statut.statut'>;
     texte_du_projet: Schema.Attribute.RichText & Schema.Attribute.Required;
     titre: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -587,7 +587,7 @@ export interface ApiStatutStatut extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nom: Schema.Attribute.String & Schema.Attribute.Required;
-    projet: Schema.Attribute.Relation<'manyToOne', 'api::projet.projet'>;
+    projets: Schema.Attribute.Relation<'oneToMany', 'api::projet.projet'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'nom'>;
     updatedAt: Schema.Attribute.DateTime;
