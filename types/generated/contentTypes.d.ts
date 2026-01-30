@@ -551,6 +551,7 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     objectif_du_projet: Schema.Attribute.JSON;
+    periode: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     realisations_cles: Schema.Attribute.JSON;
     statuts: Schema.Attribute.Relation<'oneToMany', 'api::statut.statut'>;

@@ -53,6 +53,9 @@
       "relation": "oneToMany",
       "target": "api::statut.statut",
       "mappedBy": "projet"
+    },
+    "periode": {
+      "type": "text"
     }
   }
 }
