@@ -18,7 +18,8 @@
       "inversedBy": "statuts"
     },
     "nom": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
       "type": "uid",

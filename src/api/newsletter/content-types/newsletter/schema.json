@@ -12,7 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "email": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   }
 }

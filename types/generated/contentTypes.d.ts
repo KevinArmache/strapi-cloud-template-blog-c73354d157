@@ -441,13 +441,15 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.Text &
+      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'10 Decembre 2025'>;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
     genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -457,8 +459,8 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'titre'>;
-    texte: Schema.Attribute.Text;
-    titre: Schema.Attribute.Text;
+    texte: Schema.Attribute.Text & Schema.Attribute.Required;
+    titre: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -483,11 +485,11 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'> &
       Schema.Attribute.Private;
-    nom: Schema.Attribute.String;
+    nom: Schema.Attribute.String & Schema.Attribute.Required;
     projets: Schema.Attribute.Relation<'oneToMany', 'api::projet.projet'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'nom'>;
@@ -511,7 +513,7 @@ export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Text;
+    email: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -536,27 +538,28 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    beneficiaires: Schema.Attribute.Text;
-    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    beneficiaires: Schema.Attribute.Text & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
     genre: Schema.Attribute.Relation<'manyToOne', 'api::genre.genre'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localisation: Schema.Attribute.Text;
+    localisation: Schema.Attribute.Text & Schema.Attribute.Required;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::projet.projet'
     > &
       Schema.Attribute.Private;
-    objectif_du_projet: Schema.Attribute.JSON;
-    periode: Schema.Attribute.Text;
+    objectif_du_projet: Schema.Attribute.JSON & Schema.Attribute.Required;
+    periode: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    realisations_cles: Schema.Attribute.JSON;
+    realisations_cles: Schema.Attribute.JSON & Schema.Attribute.Required;
     statuts: Schema.Attribute.Relation<'oneToMany', 'api::statut.statut'>;
-    texte_du_projet: Schema.Attribute.RichText;
-    titre: Schema.Attribute.Text;
+    texte_du_projet: Schema.Attribute.RichText & Schema.Attribute.Required;
+    titre: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -583,7 +586,7 @@ export interface ApiStatutStatut extends Struct.CollectionTypeSchema {
       'api::statut.statut'
     > &
       Schema.Attribute.Private;
-    nom: Schema.Attribute.String;
+    nom: Schema.Attribute.String & Schema.Attribute.Required;
     projet: Schema.Attribute.Relation<'manyToOne', 'api::projet.projet'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'nom'>;

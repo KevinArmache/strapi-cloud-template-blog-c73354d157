@@ -12,7 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "titre": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "genre": {
       "type": "relation",
@@ -21,26 +22,33 @@
       "inversedBy": "projets"
     },
     "beneficiaires": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "localisation": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "realisations_cles": {
-      "type": "json"
+      "type": "json",
+      "required": true
     },
     "objectif_du_projet": {
-      "type": "json"
+      "type": "json",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "texte_du_projet": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "cover": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -55,7 +63,8 @@
       "mappedBy": "projet"
     },
     "periode": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   }
 }

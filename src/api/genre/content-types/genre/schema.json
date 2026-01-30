@@ -12,7 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "nom": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
       "type": "uid",
@@ -31,7 +32,8 @@
       "mappedBy": "genre"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   }
 }

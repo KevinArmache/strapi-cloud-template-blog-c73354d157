@@ -12,11 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "titre": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "cover": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -30,13 +32,16 @@
     },
     "date": {
       "type": "text",
-      "default": "10 Decembre 2025"
+      "default": "10 Decembre 2025",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "texte": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "genre": {
       "type": "relation",
